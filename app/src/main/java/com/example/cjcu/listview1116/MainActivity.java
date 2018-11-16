@@ -27,25 +27,6 @@ public class MainActivity extends AppCompatActivity {
         String [] cityArray=getResources().getStringArray(R.array.cityname);
         ArrayAdapter<String>  ad=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,cityArray);
 
-        lv.setAdapter(ad);
-        //方法一，建立一個.java
-        //方法二
-        AdapterView.OnItemClickListener Onclick= new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("ZN",cityArray[position]);
-
-            }
-        };
-
-        lv.setOnItemClickListener(Onclick);
-
-        /*//方法三，使用lambda
-        AdapterView.OnItemClickListener Onclick2=(AdapterView<?> parent,View view,int position,long id)->{//
-            Log.i("ZN","onclick3");
-        };
-        lv.setOnItemClickListener(Onclick2);*/
-
         String data[][]={
                 {"牡羊座","3月21日～4月20日"},
                 {"金牛座","4月21日～5月20日"},
@@ -60,6 +41,27 @@ public class MainActivity extends AppCompatActivity {
                 {"水瓶座","1月21日～2月20日"},
                 {"雙魚座","2月21日～3月20日"}
         };
+
+        lv.setAdapter(ad);
+        //方法一，建立一個.java
+        //方法二
+        AdapterView.OnItemClickListener Onclick= new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("星座%s",data[position][0]+"日期%s"+data[position][1]);
+
+            }
+        };
+
+        lv.setOnItemClickListener(Onclick);
+
+        /*//方法三，使用lambda
+        AdapterView.OnItemClickListener Onclick2=(AdapterView<?> parent,View view,int position,long id)->{//
+            Log.i("ZN","onclick3");
+        };
+        lv.setOnItemClickListener(Onclick2);*/
+
+
 
         List<Map<String,Object>> item=new ArrayList<Map<String,Object>>();
 
